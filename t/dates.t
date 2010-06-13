@@ -17,7 +17,7 @@ sub gives($$$) {
     my $f = DateTime::Format::Czech->new(show_year => 1);
     gives $f, {year=>2010, month=> 1, day=>1}, '1. ledna 2010';
 }{
-    my $f = DateTime::Format::Czech->new(show_year => 1, month_by_name => 0);
+    my $f = DateTime::Format::Czech->new(show_year => 1, show_month_name => 0);
     gives $f, {year=>2010, month=> 1, day=>1}, '1. 1. 2010';
 }
 
