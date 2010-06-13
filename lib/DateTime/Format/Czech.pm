@@ -2,6 +2,7 @@ package DateTime::Format::Czech;
 
 use utf8;
 use Moose;
+use MooseX::Aliases;
 
 =encoding utf-8
 
@@ -115,6 +116,8 @@ name.
 
 =cut
 
+alias format => 'format_datetime';
+
 sub format_datetime
 {
     my ($self, $date) = @_;
@@ -124,10 +127,6 @@ sub format_datetime
     }
     return $self->format_date($date) if $self->show_date;
     return $self->format_time($date);
-}
-
-sub format {
-    return shift->format_datetime(@_);
 }
 
 =head1 AUTHOR
