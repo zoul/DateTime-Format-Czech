@@ -7,7 +7,7 @@ use Moose;
 
 =head1 SYNOPSIS
 
-Format your DateTime values as usual in Czech. Now also
+Format your C<DateTime> values as usual in Czech. Now also
 with month names, day names and less sugar!
 
 =head1 DESCRIPTION
