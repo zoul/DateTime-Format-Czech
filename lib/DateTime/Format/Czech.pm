@@ -6,6 +6,7 @@ use Moose;
 has show_time => (is => 'ro', isa => 'Bool', default => 0);
 has show_date => (is => 'ro', isa => 'Bool', default => 1);
 has show_year => (is => 'ro', isa => 'Bool', default => 0);
+has show_day_name => (is => 'ro', isa => 'Bool', default => 0);
 has month_by_name => (is => 'ro', isa => 'Bool', default => 1);
 has compound_format => (is => 'ro', isa => 'Str', default => '%s v %s');
 
@@ -14,12 +15,17 @@ my @MONTH_NAMES = qw/
     května června července srpna září
     října listopadu prosince/;
 
+my @DAY_NAMES = qw/
+    pondělí úterý středa čtvrtek
+    pátek sobota neděle/;
+
 sub format_date
 {
     my ($self, $date) = @_;
     my $output = $self->month_by_name ?
         join('. ', $date->day, $MONTH_NAMES[$date->month_0]) :
         sprintf '%i. %i.', $date->day, $date->month;
+    $output = $DAY_NAMES[$date->wday_0] . ' ' . $output if $self->show_day_name;
     $output .= ' ' . $date->year if $self->show_year;
     return $output;
 }
