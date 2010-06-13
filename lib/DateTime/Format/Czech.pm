@@ -47,6 +47,8 @@ On by default.
 The C<sprintf> pattern used to glue the time and date parts.
 The default value is C<%s v %s> (“5. 6. v 16.30”).
 
+=back
+
 =cut
 
 has show_time => (is => 'ro', isa => 'Bool', default => 0);
@@ -65,6 +67,17 @@ my @DAY_NAMES = qw/
     pondělí úterý středa čtvrtek
     pátek sobota neděle/;
 
+=head1 METHODS
+
+=over 4
+
+=item B<format_date>
+
+Takes a L<DateTime> value, returns a string representation
+of its date part.
+
+=cut
+
 sub format_date
 {
     my ($self, $date) = @_;
@@ -76,11 +89,31 @@ sub format_date
     return $output;
 }
 
+=item B<format_time>
+
+Takes a L<DateTime> value, returns a string representation
+of its time part in 24-hour time system. Minutes are zero-padded
+if needed (“13.00”, “19.01”).
+
+=cut
+
 sub format_time
 {
     my ($self, $date) = @_;
     return sprintf '%i.%02i', $date->hour, $date->minute;
 }
+
+=item B<format_datetime>
+
+Formats a given L<DateTime> value, returning date and time parts
+as configured by the C<show_date> and C<show_time> attributes. The
+date and time parts are glued together using the C<compound_format>
+pattern. You can also call this method using the shorter C<format>
+name.
+
+=back
+
+=cut
 
 sub format_datetime
 {
@@ -93,7 +126,9 @@ sub format_datetime
     return $self->format_time($date);
 }
 
-=back
+sub format {
+    return shift->format_datetime(@_);
+}
 
 =head1 AUTHOR
 
