@@ -27,7 +27,7 @@ sub format_date
 sub format_time
 {
     my ($self, $date) = @_;
-    return $date->hour . '.' . $date->minute;
+    return sprintf '%i.%02i', $date->hour, $date->minute;
 }
 
 sub format_datetime
