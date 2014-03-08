@@ -1,5 +1,6 @@
 package DateTime::Format::Czech;
 
+use 5.008;
 use utf8;
 use Moose;
 use MooseX::Aliases;
