@@ -6,6 +6,10 @@ use MooseX::Aliases;
 
 =encoding utf-8
 
+=head1 NAME
+
+DateTime::Format::Czech - format DateTime objects in the usual Czech way
+
 =head1 SYNOPSIS
 
 Format your C<DateTime> values as usual in Czech. Now also
