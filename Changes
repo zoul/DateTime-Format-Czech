@@ -3,6 +3,7 @@
 0.21      2014-03-
           - Added an abstract section to the pod
           - Specified min perl version as 5.8.0
+          - Added COPYRIGHT AND LICENSE section to pod
 
 0.2       2010-06-13 16:45:21 Europe/Prague
           - Initial release.
